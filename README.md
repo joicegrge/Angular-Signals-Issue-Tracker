@@ -314,6 +314,14 @@ No external backend or database is required to run the application.
 
 ---
 
+## Screenshots
+
+<img width="1600" height="772" alt="image" src="https://github.com/user-attachments/assets/35b02c99-f9cb-4855-9f61-cc65551d6c81" />
+
+<img width="1600" height="764" alt="image" src="https://github.com/user-attachments/assets/4125d8b8-a53c-425e-9ad3-0b8b10fc8f8e" />
+
+
+
 ## 🎯 Project Objective
 
 This project was developed as part of the **Angular Signals Assignment – Issue Tracker (November 20, 2026)**.
