@@ -1,0 +1,59 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.summary-metric {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--surface);
+}
+
+.metric-label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+.metric-value {
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.overdue-metric .metric-value {
+  color: var(--danger);
+}
+
+.completion-metric .metric-value {
+  color: var(--success);
+}
+
+@media (max-width: 520px) {
+  .summary-bar {
+    gap: 0.5rem;
+  }
+
+  .summary-metric {
+    padding: 0.7rem;
+  }
+
+  .metric-label {
+    font-size: 0.66rem;
+  }
+
+  .metric-value {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,104 @@
+<div class="form-layer">
+  <button class="form-backdrop" type="button" aria-label="Close new issue form" (click)="close()"></button>
+  <section class="new-issue-panel" role="dialog" aria-modal="true" aria-labelledby="new-issue-title">
+    <header class="form-heading">
+      <div>
+        <p class="form-eyebrow">ISSUE TRACKER</p>
+        <h2 id="new-issue-title">Create a new issue</h2>
+      </div>
+      <button class="close-button" type="button" aria-label="Close new issue form" (click)="close()">×</button>
+    </header>
+
+    <form class="issue-form" (submit)="$event.preventDefault(); submit()">
+      <label for="new-issue-name">Title <span aria-hidden="true">*</span></label>
+      <input
+        id="new-issue-name"
+        type="text"
+        required
+        minlength="5"
+        autocomplete="off"
+        [value]="title()"
+        [attr.aria-invalid]="!titleIsValid()"
+        aria-describedby="new-issue-title-help"
+        (input)="onTitleInput($event)"
+      />
+      <p id="new-issue-title-help" class="field-help">Enter at least 5 characters.</p>
+
+      <label for="new-issue-description">Description</label>
+      <textarea
+        id="new-issue-description"
+        rows="3"
+        [value]="description()"
+        (input)="onDescriptionInput($event)"
+      ></textarea>
+
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="new-issue-type">Type</label>
+          <select id="new-issue-type" [value]="type()" (change)="onTypeChange($event)">
+            @for (issueType of types; track issueType) {
+              <option [value]="issueType">{{ issueType }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="new-issue-priority">Priority</label>
+          <select id="new-issue-priority" [value]="priority()" (change)="onPriorityChange($event)">
+            @for (issuePriority of priorities; track issuePriority) {
+              <option [value]="issuePriority">{{ issuePriority }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="new-issue-points">Story points</label>
+          <select id="new-issue-points" [value]="storyPoints()" (change)="onStoryPointsChange($event)">
+            @for (points of storyPointOptions; track points) {
+              <option [value]="points">{{ points }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="new-issue-due-date">Due date</label>
+          <input
+            id="new-issue-due-date"
+            type="date"
+            [min]="today"
+            [value]="dueDate()"
+            [attr.aria-invalid]="!dueDateIsValid()"
+            aria-describedby="new-issue-date-help"
+            (input)="onDueDateInput($event)"
+          />
+        </div>
+
+        <div class="form-field assignee-field">
+          <label for="new-issue-assignee">Assignee (optional)</label>
+          <select id="new-issue-assignee" [value]="assigneeId()" (change)="onAssigneeChange($event)">
+            <option value="">Unassigned</option>
+            @for (member of teamMembers(); track member.id) {
+              <option [value]="member.id">{{ member.name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <p id="new-issue-date-help" class="field-help">Due date must be today or later.</p>
+      @if (!titleIsValid()) {
+        <p class="validation-message" role="status">Title is required and must contain at least 5 characters.</p>
+      }
+      @if (!dueDateIsValid()) {
+        <p class="validation-message" role="status">Due date cannot be in the past.</p>
+      }
+      @if (error(); as message) {
+        <p class="error-message" role="alert">{{ message }}</p>
+      }
+
+      <footer class="form-actions">
+        <button type="button" class="secondary-button" (click)="close()">Cancel</button>
+        <button type="submit" class="primary-button" [disabled]="!isValid()">Create issue</button>
+      </footer>
+    </form>
+  </section>
+</div>

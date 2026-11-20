@@ -1,0 +1,140 @@
+<main class="board-page">
+  <header class="board-heading">
+    <div>
+      <p class="eyebrow">TEAM WORKSPACE</p>
+      <h1>Issue board</h1>
+      <p class="board-subtitle">Track bugs, tasks, and stories from start to finish.</p>
+    </div>
+    <div class="board-actions">
+      <button class="board-marker reset-button" type="button" (click)="resetData()">Reset data</button>
+      <button class="board-marker new-issue-button" type="button" (click)="openNewIssueForm()">New issue</button>
+    </div>
+  </header>
+
+  @if (isLoading()) {
+    <section class="state-panel" role="status" aria-live="polite">
+      <span class="loading-indicator" aria-hidden="true"></span>
+      <div>
+        <h2>Loading your board</h2>
+        <p>Fetching issues and team members…</p>
+      </div>
+    </section>
+  } @else if (error(); as loadError) {
+    <section class="state-panel error-panel" role="alert">
+      <div class="state-icon" aria-hidden="true">!</div>
+      <div>
+        <h2>Board unavailable</h2>
+        <p>{{ loadError.message || 'The issue and team data could not be loaded.' }}</p>
+      </div>
+    </section>
+  } @else if (columns(); as boardColumns) {
+    <app-summary-bar
+      [openIssueCount]="openIssueCount() ?? 0"
+      [overdueIssueCount]="overdueIssueCount() ?? 0"
+      [completionPercentage]="completionPercentage() ?? 0"
+    />
+
+    <section class="filter-panel" aria-label="Filter issues">
+      <div class="filter-controls">
+        <label class="filter-control search-control" for="issue-search">
+          <span>Search issues</span>
+          <input
+            id="issue-search"
+            type="search"
+            autocomplete="off"
+            placeholder="Search by ID or title"
+            [value]="searchText()"
+            (input)="onSearchInput($event)"
+          />
+        </label>
+
+        <label class="filter-control" for="assignee-filter">
+          <span>Assignee</span>
+          <select
+            id="assignee-filter"
+            aria-label="Filter by assignee"
+            [value]="assigneeFilterValue()"
+            (change)="onAssigneeFilterChange($event)"
+          >
+            <option value="all">All</option>
+            <option value="unassigned">Unassigned</option>
+            @for (member of teamMembers(); track member.id) {
+              <option [value]="'member:' + member.id">{{ member.name }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="filter-control" for="priority-filter">
+          <span>Priority</span>
+          <select
+            id="priority-filter"
+            aria-label="Filter by priority"
+            [value]="priorityFilter()"
+            (change)="onPriorityFilterChange($event)"
+          >
+            <option value="all">All</option>
+            @for (priority of priorities; track priority) {
+              <option [value]="priority">{{ priority }}</option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <div class="filter-summary">
+        <p aria-live="polite">Showing {{ filteredIssueCount() }} of {{ totalIssueCount() }} issues</p>
+        <button type="button" [disabled]="!hasActiveFilters()" (click)="clearFilters()">
+          Clear filters
+        </button>
+      </div>
+    </section>
+
+    <section class="kanban-board" aria-label="Issues by status">
+      @for (column of boardColumns; track column.status) {
+        <section class="board-column" [attr.aria-labelledby]="'column-' + column.status">
+          <header class="column-heading">
+            <div class="column-title-row">
+              <span class="status-dot" [class]="'dot-' + column.status.toLowerCase().replace(' ', '-')"></span>
+              <h2 [id]="'column-' + column.status">{{ column.status }}</h2>
+              <span class="issue-count" [attr.aria-label]="column.issueCount + ' issues'">
+                {{ column.issueCount }}
+              </span>
+            </div>
+            <p class="column-points">
+              {{ column.storyPointTotal }} story {{ column.storyPointTotal === 1 ? 'point' : 'points' }}
+            </p>
+          </header>
+
+          <div class="column-cards">
+            @if (column.cards.length === 0) {
+              <p class="empty-column">No issues here yet.</p>
+            } @else {
+              @for (card of column.cards; track card.issue.id) {
+                <app-issue-card
+                  [issue]="card.issue"
+                  [assigneeName]="card.assigneeName"
+                  [overdue]="card.overdue"
+                  (selected)="selectIssue($event)"
+                />
+              }
+            }
+          </div>
+        </section>
+      }
+    </section>
+
+    @if (selectedIssue(); as selected) {
+      <app-issue-detail-panel
+        [issue]="selected"
+        [teamMembers]="teamMembers()"
+        (closed)="closeIssueDetail()"
+      />
+    }
+
+    @if (isNewIssueFormOpen()) {
+      <app-new-issue-form
+        [(open)]="isNewIssueFormOpen"
+        (created)="closeNewIssueForm()"
+      />
+    }
+  }
+</main>

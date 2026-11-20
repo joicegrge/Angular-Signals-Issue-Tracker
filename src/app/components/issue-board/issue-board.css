@@ -1,0 +1,269 @@
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--text);
+}
+
+.board-page {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(1.25rem, 3vw, 2.75rem);
+}
+
+.board-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.board-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.55rem;
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+.board-heading h1 {
+  margin-bottom: 0.4rem;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  letter-spacing: -0.035em;
+}
+
+.board-subtitle {
+  margin-bottom: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.board-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-label);
+  font-size: 0.78rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.board-marker span,
+.status-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--status-dot);
+}
+
+.new-issue-button {
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: var(--on-brand);
+  cursor: pointer;
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
+}
+
+.filter-panel {
+  min-width: 0;
+  margin-bottom: 1rem;
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: var(--surface);
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.filter-control {
+  display: grid;
+  min-width: 0;
+  gap: 0.35rem;
+  color: var(--text-label);
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+.filter-control input,
+.filter-control select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: 2.55rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--control-border);
+  border-radius: 0.55rem;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.filter-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.filter-summary p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.filter-summary button {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--control-border);
+  border-radius: 0.55rem;
+  background: var(--surface);
+  color: var(--text-strong);
+  font-size: 0.78rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.board-column {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.95rem;
+  background: var(--column);
+}
+
+.column-heading {
+  padding: 1rem 1rem 0.85rem;
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--column-heading);
+}
+
+.column-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.column-title-row h2 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 720;
+}
+
+.status-dot.dot-to-do {
+  background: var(--status-todo);
+}
+
+.status-dot.dot-in-progress {
+  background: var(--status-progress);
+}
+
+.status-dot.dot-in-review {
+  background: var(--status-review);
+}
+
+.status-dot.dot-done {
+  background: var(--status-done);
+}
+
+.issue-count {
+  display: inline-grid;
+  min-width: 1.45rem;
+  height: 1.45rem;
+  place-items: center;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--count-text);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.column-points {
+  margin: 0.5rem 0 0 1.1rem;
+  color: var(--text-soft);
+  font-size: 0.73rem;
+}
+
+.column-cards {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 7rem;
+  padding: 0.75rem;
+}
+
+.empty-column {
+  align-self: center;
+  margin: 0;
+  padding: 1.5rem 0.5rem;
+  color: var(--text-placeholder);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .kanban-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .board-page {
+    padding: 1rem;
+  }
+
+  .board-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+  }
+
+  .board-actions {
+    justify-content: flex-start;
+  }
+
+  .kanban-board {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.8rem;
+  }
+
+  .filter-controls {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .filter-summary {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

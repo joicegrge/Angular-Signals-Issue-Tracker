@@ -1,0 +1,110 @@
+:host {
+  display: block;
+}
+
+.issue-card {
+  display: grid;
+  width: 100%;
+  gap: 0.9rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  box-shadow: 0 2px 7px rgb(28 43 64 / 5%);
+  cursor: pointer;
+}
+
+.card-topline,
+.issue-labels,
+.card-details p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.issue-id {
+  color: var(--issue-id);
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.035em;
+}
+
+.issue-title {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.issue-labels {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.type-label,
+.priority-label,
+.overdue-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.45rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.type-label {
+  color: var(--text-label);
+  background: var(--chip-muted);
+}
+
+.priority-critical {
+  color: var(--danger);
+  background: var(--priority-critical-bg);
+}
+
+.priority-high {
+  color: var(--warning);
+  background: var(--priority-high-bg);
+}
+
+.priority-medium {
+  color: var(--priority-medium);
+  background: var(--priority-medium-bg);
+}
+
+.priority-low {
+  color: var(--success);
+  background: var(--priority-low-bg);
+}
+
+.overdue-label {
+  color: var(--danger);
+  background: var(--danger-chip);
+}
+
+.card-details {
+  display: grid;
+  gap: 0.45rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--card-divider);
+}
+
+.card-details p {
+  justify-content: flex-start;
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.detail-label {
+  flex: 0 0 4rem;
+  color: var(--text-placeholder);
+  font-size: 0.72rem;
+}

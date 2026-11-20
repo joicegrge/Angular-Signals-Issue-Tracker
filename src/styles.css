@@ -1,0 +1,127 @@
+:root {
+  color-scheme: dark;
+  --page: #111821;
+  --text: #e6edf5;
+  --text-strong: #d3dce8;
+  --text-label: #bbc7d5;
+  --text-secondary: #aab7c7;
+  --text-muted: #95a4b6;
+  --text-soft: #9aa9bb;
+  --text-placeholder: #91a0b2;
+  --issue-id: #9aabc0;
+  --count-text: #c2cede;
+  --surface: #1c2734;
+  --column: #17212d;
+  --column-heading: #202c3a;
+  --field-subtle: #202c3a;
+  --chip: #2b3949;
+  --chip-muted: #2b3949;
+  --border: #344354;
+  --border-soft: #344354;
+  --control-border: #46576a;
+  --card-divider: #344354;
+  --brand: #315f9f;
+  --on-brand: #fff;
+  --priority-medium: #a9c8ff;
+  --priority-critical-bg: #512b30;
+  --priority-high-bg: #4b3822;
+  --priority-medium-bg: #233b59;
+  --priority-low-bg: #254333;
+  --status-dot: #83a4e2;
+  --danger: #ffaaa5;
+  --danger-border: #653b3d;
+  --danger-surface: #2b2025;
+  --danger-chip: #512b30;
+  --warning: #ffca87;
+  --success: #9dd2aa;
+  --disabled: #465364;
+  --spinner-track: #344354;
+  --spinner-accent: #86afea;
+  --status-todo: #9baabd;
+  --status-progress: #80aaf0;
+  --status-review: #e6b764;
+  --status-done: #8bc89a;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: clip;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+app-root,
+app-issue-board {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.loading-indicator {
+  width: 1.6rem;
+  height: 1.6rem;
+  flex: 0 0 auto;
+  border: 3px solid var(--spinner-track);
+  border-top-color: var(--spinner-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+app-issue-board .state-panel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 40rem;
+  margin: 4rem auto;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: 0 8px 28px rgb(28 43 64 / 6%);
+}
+
+app-issue-board .state-panel h2 {
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+}
+
+app-issue-board .state-panel p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+app-issue-board .error-panel {
+  border-color: var(--danger-border);
+  background: var(--danger-surface);
+}
+
+app-issue-board .state-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--danger-chip);
+  color: var(--danger);
+  font-weight: 800;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

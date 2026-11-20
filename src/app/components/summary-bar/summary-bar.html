@@ -1,0 +1,14 @@
+<section class="summary-bar" aria-label="Issue summary">
+  <article class="summary-metric" data-metric="open">
+    <span class="metric-label">Open issues</span>
+    <strong class="metric-value">{{ openIssueCount() }}</strong>
+  </article>
+  <article class="summary-metric overdue-metric" data-metric="overdue">
+    <span class="metric-label">Overdue</span>
+    <strong class="metric-value">{{ overdueIssueCount() }}</strong>
+  </article>
+  <article class="summary-metric completion-metric" data-metric="completion">
+    <span class="metric-label">Completion</span>
+    <strong class="metric-value">{{ completionPercentage() }}%</strong>
+  </article>
+</section>

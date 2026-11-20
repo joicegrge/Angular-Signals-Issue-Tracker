@@ -1,0 +1,28 @@
+<button class="issue-card" type="button" [attr.data-issue-id]="issue().id" (click)="select()">
+  <div class="card-topline">
+    <span class="issue-id">{{ issue().id }}</span>
+    @if (overdue()) {
+      <span class="overdue-label">Overdue</span>
+    }
+  </div>
+
+  <h3 class="issue-title">{{ issue().title }}</h3>
+
+  <div class="issue-labels" aria-label="Issue type and priority">
+    <span class="type-label">{{ issue().type }}</span>
+    <span
+      class="priority-label"
+      [class.priority-critical]="issue().priority === 'Critical'"
+      [class.priority-high]="issue().priority === 'High'"
+      [class.priority-medium]="issue().priority === 'Medium'"
+      [class.priority-low]="issue().priority === 'Low'"
+    >
+      {{ issue().priority }}
+    </span>
+  </div>
+
+  <div class="card-details">
+    <p><span class="detail-label">Assignee</span><span>{{ assigneeName() }}</span></p>
+    <p><span class="detail-label">Due</span><time>{{ dueDateLabel() }}</time></p>
+  </div>
+</button>

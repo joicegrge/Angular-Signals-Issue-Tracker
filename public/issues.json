@@ -1,0 +1,167 @@
+[
+  {
+    "id": "TRK-101",
+    "title": "Fix session timeout on report export",
+    "description": "Exporting a large report can outlast the session and return users to the sign-in page without a download.",
+    "type": "Bug",
+    "priority": "Critical",
+    "status": "In Progress",
+    "assigneeId": "TM-001",
+    "storyPoints": 5,
+    "dueDate": "2026-11-24"
+  },
+  {
+    "id": "TRK-102",
+    "title": "Add keyboard navigation to issue list",
+    "description": "Allow users to move between issue rows and open a selected issue with the keyboard.",
+    "type": "Story",
+    "priority": "High",
+    "status": "In Progress",
+    "assigneeId": "TM-001",
+    "storyPoints": 3,
+    "dueDate": "2026-11-26"
+  },
+  {
+    "id": "TRK-103",
+    "title": "Correct timezone in activity timestamps",
+    "description": "Activity timestamps currently display one hour ahead for users in India during daylight-saving conversions.",
+    "type": "Bug",
+    "priority": "Medium",
+    "status": "In Progress",
+    "assigneeId": "TM-001",
+    "storyPoints": 2,
+    "dueDate": "2026-11-27"
+  },
+  {
+    "id": "TRK-104",
+    "title": "Document issue triage checklist",
+    "description": "Write a concise checklist for reviewing new bug reports before assigning them to a sprint.",
+    "type": "Task",
+    "priority": "Low",
+    "status": "To Do",
+    "assigneeId": "TM-002",
+    "storyPoints": 1,
+    "dueDate": "2026-11-30"
+  },
+  {
+    "id": "TRK-105",
+    "title": "Prevent duplicate form submission",
+    "description": "Disable the submit action while a request is pending to avoid creating duplicate records on slow connections.",
+    "type": "Bug",
+    "priority": "High",
+    "status": "In Review",
+    "assigneeId": "TM-003",
+    "storyPoints": 3,
+    "dueDate": "2026-11-21"
+  },
+  {
+    "id": "TRK-106",
+    "title": "Add saved filters for project leads",
+    "description": "Let project leads quickly reuse common combinations of status, assignee, and priority filters.",
+    "type": "Story",
+    "priority": "Medium",
+    "status": "To Do",
+    "assigneeId": null,
+    "storyPoints": 8,
+    "dueDate": "2026-12-04"
+  },
+  {
+    "id": "TRK-107",
+    "title": "Resolve blank avatar on team page",
+    "description": "Show the initials fallback when a team member profile has no uploaded avatar.",
+    "type": "Bug",
+    "priority": "Low",
+    "status": "Done",
+    "assigneeId": "TM-004",
+    "storyPoints": 1,
+    "dueDate": "2026-11-16"
+  },
+  {
+    "id": "TRK-108",
+    "title": "Build sprint capacity summary",
+    "description": "Provide a compact view of committed story points by assignee for the current sprint.",
+    "type": "Story",
+    "priority": "High",
+    "status": "In Progress",
+    "assigneeId": "TM-002",
+    "storyPoints": 5,
+    "dueDate": "2026-11-25"
+  },
+  {
+    "id": "TRK-109",
+    "title": "Update onboarding guide screenshots",
+    "description": "Replace outdated screenshots in the onboarding guide after the navigation refresh.",
+    "type": "Task",
+    "priority": "Low",
+    "status": "To Do",
+    "assigneeId": "TM-004",
+    "storyPoints": 2,
+    "dueDate": null
+  },
+  {
+    "id": "TRK-110",
+    "title": "Fix issue search ignoring hyphens",
+    "description": "Searching for an issue ID with a hyphen currently returns no results unless the punctuation is removed.",
+    "type": "Bug",
+    "priority": "Critical",
+    "status": "In Review",
+    "assigneeId": "TM-003",
+    "storyPoints": 3,
+    "dueDate": "2026-11-18"
+  },
+  {
+    "id": "TRK-111",
+    "title": "Add release notes preview",
+    "description": "Show a preview of release notes before a project lead publishes them to the team.",
+    "type": "Story",
+    "priority": "Medium",
+    "status": "Done",
+    "assigneeId": "TM-001",
+    "storyPoints": 5,
+    "dueDate": "2026-11-19"
+  },
+  {
+    "id": "TRK-112",
+    "title": "Investigate intermittent board refresh",
+    "description": "Identify why the board sometimes reloads after a user returns from another browser tab.",
+    "type": "Task",
+    "priority": "High",
+    "status": "To Do",
+    "assigneeId": null,
+    "storyPoints": 2,
+    "dueDate": "2026-11-19"
+  },
+  {
+    "id": "TRK-113",
+    "title": "Improve contrast for priority labels",
+    "description": "Adjust priority label colors to meet accessible contrast expectations in both light and dark themes.",
+    "type": "Task",
+    "priority": "Medium",
+    "status": "In Progress",
+    "assigneeId": "TM-003",
+    "storyPoints": 3,
+    "dueDate": "2026-11-28"
+  },
+  {
+    "id": "TRK-115",
+    "title": "Add assignee workload indicator",
+    "description": "Show a small workload indicator when selecting an assignee for a new issue.",
+    "type": "Story",
+    "priority": "High",
+    "status": "To Do",
+    "assigneeId": "TM-004",
+    "storyPoints": 5,
+    "dueDate": "2026-12-02"
+  },
+  {
+    "id": "TRK-116",
+    "title": "Fix narrow-screen detail panel overflow",
+    "description": "Keep the issue detail panel within the viewport on small laptop and tablet widths.",
+    "type": "Bug",
+    "priority": "Critical",
+    "status": "Done",
+    "assigneeId": null,
+    "storyPoints": 2,
+    "dueDate": "2026-11-17"
+  }
+]
